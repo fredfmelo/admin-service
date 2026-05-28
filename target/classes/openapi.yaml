@@ -1,0 +1,83 @@
+openapi: 3.0.3
+
+info:
+  title: Admin Service API
+  version: 1.0.0
+  description: Administrative operations for the event-driven platform.
+
+servers:
+  - url: http://localhost:8084
+
+paths:
+  /admin/dlq/retry/{service}:
+    post:
+      tags:
+        - DLQ
+      summary: Retry all messages from a DLQ
+      description: |
+        Reads messages from the selected Dead Letter Queue,
+        republishes them to the original queue and removes
+        them from the DLQ.
+      operationId: retryDlqMessages
+
+      parameters:
+        - name: service
+          in: path
+          required: true
+          description: Target service DLQ
+          schema:
+            type: string
+            enum:
+              - inventory
+              - notification
+              - order-completion
+              - order-state
+              - payment
+
+      responses:
+        "200":
+          description: Messages retried successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DlqRetryResponse"
+
+        "400":
+          description: Invalid service name
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+
+    DlqRetryResponse:
+      type: object
+      properties:
+        service:
+          type: string
+          example: payment
+
+        retriedMessages:
+          type: integer
+          example: 5
+
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-05-28T01:22:00Z"
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid service

@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+      {
+        "type": "java",
+        "name": "Run Order Service",
+        "request": "launch",
+        "mainClass": "com.fredfmelo.orderservice.OrderServiceApplication",
+        "projectName": "order-service"
+      }
+    ]
+  }

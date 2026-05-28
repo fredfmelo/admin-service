@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: admin-service
+
+  config:
+    import: "aws-parameterstore:/admin-service/"
+
+server:
+  port: 8084
+
+aws:
+  dynamodb:
+    table-name: ADMIN
+
+  sns:
+    order-topic-arn: arn:aws:sns:us-east-1:200849340204:order-events
+  sqs:
+    inventory-queue-url: ${/admin-service/sqs/inventory-queue-url}
+    inventory-dlq-url: ${/admin-service/sqs/inventory-dlq-url}
+
+    notification-queue-url: ${/admin-service/sqs/notification-queue-url}
+    notification-dlq-url: ${/admin-service/sqs/notification-dlq-url}
+
+    order-completion-queue-url: ${/admin-service/sqs/order-completion-queue-url}
+    order-completion-dlq-url: ${/admin-service/sqs/order-completion-dlq-url}
+
+    order-state-queue-url: ${/admin-service/sqs/order-state-queue-url}
+    order-state-dlq-url: ${/admin-service/sqs/order-state-dlq-url}
+
+    payment-queue-url: ${/admin-service/sqs/payment-queue-url}
+    payment-dlq-url: ${/admin-service/sqs/payment-dlq-url}
