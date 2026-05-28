@@ -8,16 +8,6 @@
 /Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/dlq/controller/DlqController.java
 /Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/dlq/model/QueueType.java
 /Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/dlq/service/DlqService.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/idempotency/entity/IdempotencyEntity.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/idempotency/event/IdempotentEvent.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/idempotency/executor/IdempotentExecutor.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/idempotency/repository/IdempotencyRepository.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/idempotency/service/IdempotencyService.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/outbox/entity/OutboxEntity.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/outbox/publisher/OutboxEventPublisher.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/outbox/repository/OutboxRepository.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/outbox/scheduler/OutboxProcessor.java
-/Users/fredfmelo/Projects/admin-service/src/main/java/com/fredfmelo/adminservice/outbox/service/OutboxService.java
 /Users/fredfmelo/Projects/admin-service/target/generated-sources/openapi/./com/fredfmelo/orderservice/api/ApiUtil.java
 /Users/fredfmelo/Projects/admin-service/target/generated-sources/openapi/./com/fredfmelo/orderservice/api/DlqApi.java
 /Users/fredfmelo/Projects/admin-service/target/generated-sources/openapi/./com/fredfmelo/orderservice/model/DlqRetryResponse.java

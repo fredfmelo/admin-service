@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-27T22:26:18.515451-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:01:11.113779-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
 @Validated
 @Tag(name = "DLQ", description = "the DLQ API")
 public interface DlqApi {

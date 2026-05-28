@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * DlqRetryResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-27T22:26:18.515451-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:01:11.113779-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
 public class DlqRetryResponse {
 
   private @Nullable String service;

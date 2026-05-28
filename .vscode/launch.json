@@ -4,10 +4,10 @@
         
       {
         "type": "java",
-        "name": "Run Order Service",
+        "name": "Run Admin Service",
         "request": "launch",
-        "mainClass": "com.fredfmelo.orderservice.OrderServiceApplication",
-        "projectName": "order-service"
+        "mainClass": "com.fredfmelo.adminservice.AdminServiceApplication",
+        "projectName": "admin-service"
       }
     ]
   }
