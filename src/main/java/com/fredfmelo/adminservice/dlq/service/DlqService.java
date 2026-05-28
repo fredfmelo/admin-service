@@ -8,6 +8,7 @@ import com.fredfmelo.adminservice.config.ServiceConfig;
 import com.fredfmelo.adminservice.dlq.model.QueueType;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.services.sqs.model.DeleteMessageRequest;
 import software.amazon.awssdk.services.sqs.model.Message;
@@ -15,6 +16,7 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class DlqService {
 
@@ -27,14 +29,18 @@ public class DlqService {
         String queueUrl = getQueueName(queueType);
 
         List<Message> messages = sqsClient.receiveMessage(ReceiveMessageRequest.builder()
-                        .queueUrl(dlqUrl)
-                        .maxNumberOfMessages(10)
-                        .build())
+                .queueUrl(dlqUrl)
+                .maxNumberOfMessages(10)
+                .build())
                 .messages();
 
-        for (Message message : messages) {
-            retryMessage(queueUrl, message);
-            deleteMessage(dlqUrl, message);
+        if (!messages.isEmpty()) {
+            log.info("Retrying {} messages from {}", messages.size(), dlqUrl);
+
+            for (Message message : messages) {
+                retryMessage(queueUrl, message);
+                deleteMessage(dlqUrl, message);
+            }
         }
 
         return messages.size();

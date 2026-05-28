@@ -9,7 +9,7 @@ servers:
   - url: http://localhost:8084
 
 paths:
-  /admin/dlq/retry/{service}:
+  /admin/dlq/retry/{queue}:
     post:
       tags:
         - DLQ
@@ -21,10 +21,10 @@ paths:
       operationId: retryDlqMessages
 
       parameters:
-        - name: service
+        - name: queue
           in: path
           required: true
-          description: Target service DLQ
+          description: Target queue DLQ
           schema:
             type: string
             enum:
@@ -43,7 +43,7 @@ paths:
                 $ref: "#/components/schemas/DlqRetryResponse"
 
         "400":
-          description: Invalid service name
+          description: Invalid queue name
           content:
             application/json:
               schema:
@@ -62,7 +62,7 @@ components:
     DlqRetryResponse:
       type: object
       properties:
-        service:
+        queue:
           type: string
           example: payment
 
@@ -80,4 +80,4 @@ components:
       properties:
         message:
           type: string
-          example: Invalid service
+          example: Invalid queue

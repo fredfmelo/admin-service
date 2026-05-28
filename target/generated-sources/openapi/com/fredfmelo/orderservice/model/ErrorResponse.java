@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:01:11.113779-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:56:48.468512-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
 public class ErrorResponse {
 
   private @Nullable String message;
@@ -33,7 +33,7 @@ public class ErrorResponse {
    * @return message
    */
   
-  @Schema(name = "message", example = "Invalid service", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "message", example = "Invalid queue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
   public @Nullable String getMessage() {
     return message;

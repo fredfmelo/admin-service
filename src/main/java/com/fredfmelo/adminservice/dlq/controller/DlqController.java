@@ -1,7 +1,9 @@
 package com.fredfmelo.adminservice.dlq.controller;
 
 import java.time.OffsetDateTime;
+import java.util.Locale;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,13 +21,18 @@ public class DlqController implements DlqApi {
     private final DlqService dlqService;
 
     @Override
-    public ResponseEntity<DlqRetryResponse> retryDlqMessages(String service) {
-        QueueType queueType = QueueType.valueOf(service.toUpperCase());
+    public ResponseEntity<DlqRetryResponse> retryDlqMessages(String queue) {
+        QueueType queueType;
+        try {
+            queueType = QueueType.valueOf(queue.replace("-", "_").toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
 
         int retriedMessages = dlqService.retryMessages(queueType);
 
         DlqRetryResponse response = new DlqRetryResponse()
-                .service(service)
+                .queue(queue)
                 .retriedMessages(retriedMessages)
                 .timestamp(OffsetDateTime.now());
 

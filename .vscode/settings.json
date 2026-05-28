@@ -1,4 +1,16 @@
 {
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "target/generated-sources/swagger/src/main/java"
+    ],
+
+    "workbench.editorAssociations": {
+        "*.mdc": "default",
+    },
+
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.autobuild.enabled": true,
+    "java.debug.settings.forceBuildBeforeLaunch": true,
+    "java.debug.settings.onBuildFailureProceed": false
 }

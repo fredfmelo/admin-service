@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:01:11.113779-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:56:48.468512-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
 @Validated
 @Tag(name = "DLQ", description = "the DLQ API")
 public interface DlqApi {
@@ -44,14 +44,14 @@ public interface DlqApi {
         return Optional.empty();
     }
 
-    public static final String PATH_RETRY_DLQ_MESSAGES = "/admin/dlq/retry/{service}";
+    public static final String PATH_RETRY_DLQ_MESSAGES = "/admin/dlq/retry/{queue}";
     /**
-     * POST /admin/dlq/retry/{service} : Retry all messages from a DLQ
+     * POST /admin/dlq/retry/{queue} : Retry all messages from a DLQ
      * Reads messages from the selected Dead Letter Queue, republishes them to the original queue and removes them from the DLQ. 
      *
-     * @param service Target service DLQ (required)
+     * @param queue Target queue DLQ (required)
      * @return Messages retried successfully (status code 200)
-     *         or Invalid service name (status code 400)
+     *         or Invalid queue name (status code 400)
      *         or Internal server error (status code 500)
      */
     @Operation(
@@ -63,7 +63,7 @@ public interface DlqApi {
             @ApiResponse(responseCode = "200", description = "Messages retried successfully", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = DlqRetryResponse.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid service name", content = {
+            @ApiResponse(responseCode = "400", description = "Invalid queue name", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
             }),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = {
@@ -78,27 +78,27 @@ public interface DlqApi {
     )
     
     default ResponseEntity<DlqRetryResponse> _retryDlqMessages(
-        @Parameter(name = "service", description = "Target service DLQ", required = true, in = ParameterIn.PATH) @PathVariable("service") String service
+        @Parameter(name = "queue", description = "Target queue DLQ", required = true, in = ParameterIn.PATH) @PathVariable("queue") String queue
     ) {
-        return retryDlqMessages(service);
+        return retryDlqMessages(queue);
     }
 
     // Override this method
-    default  ResponseEntity<DlqRetryResponse> retryDlqMessages(String service) {
+    default  ResponseEntity<DlqRetryResponse> retryDlqMessages(String queue) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"retriedMessages\" : 5, \"service\" : \"payment\", \"timestamp\" : \"2026-05-28T01:22:00Z\" }";
+                    String exampleString = "{ \"retriedMessages\" : 5, \"queue\" : \"payment\", \"timestamp\" : \"2026-05-28T01:22:00Z\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"message\" : \"Invalid service\" }";
+                    String exampleString = "{ \"message\" : \"Invalid queue\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"message\" : \"Invalid service\" }";
+                    String exampleString = "{ \"message\" : \"Invalid queue\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

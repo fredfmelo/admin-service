@@ -20,34 +20,34 @@ import jakarta.annotation.Generated;
  * DlqRetryResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:01:11.113779-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T08:56:48.468512-03:00[America/Sao_Paulo]", comments = "Generator version: 7.15.0")
 public class DlqRetryResponse {
 
-  private @Nullable String service;
+  private @Nullable String queue;
 
   private @Nullable Integer retriedMessages;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime timestamp;
 
-  public DlqRetryResponse service(@Nullable String service) {
-    this.service = service;
+  public DlqRetryResponse queue(@Nullable String queue) {
+    this.queue = queue;
     return this;
   }
 
   /**
-   * Get service
-   * @return service
+   * Get queue
+   * @return queue
    */
   
-  @Schema(name = "service", example = "payment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("service")
-  public @Nullable String getService() {
-    return service;
+  @Schema(name = "queue", example = "payment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("queue")
+  public @Nullable String getQueue() {
+    return queue;
   }
 
-  public void setService(@Nullable String service) {
-    this.service = service;
+  public void setQueue(@Nullable String queue) {
+    this.queue = queue;
   }
 
   public DlqRetryResponse retriedMessages(@Nullable Integer retriedMessages) {
@@ -99,21 +99,21 @@ public class DlqRetryResponse {
       return false;
     }
     DlqRetryResponse dlqRetryResponse = (DlqRetryResponse) o;
-    return Objects.equals(this.service, dlqRetryResponse.service) &&
+    return Objects.equals(this.queue, dlqRetryResponse.queue) &&
         Objects.equals(this.retriedMessages, dlqRetryResponse.retriedMessages) &&
         Objects.equals(this.timestamp, dlqRetryResponse.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(service, retriedMessages, timestamp);
+    return Objects.hash(queue, retriedMessages, timestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DlqRetryResponse {\n");
-    sb.append("    service: ").append(toIndentedString(service)).append("\n");
+    sb.append("    queue: ").append(toIndentedString(queue)).append("\n");
     sb.append("    retriedMessages: ").append(toIndentedString(retriedMessages)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");
