@@ -9,12 +9,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "aws")
+@ConfigurationProperties
 public class ServiceConfig {
 
-    private DynamoDb dynamodb;
-    private Sns sns;
-    private Sqs sqs;
+    private Aws aws;
+
+    @Getter
+    @Setter
+    public static class Aws {
+        private DynamoDb dynamodb;
+        private Sns sns;
+        private Sqs sqs;
+    }
 
     @Getter
     @Setter

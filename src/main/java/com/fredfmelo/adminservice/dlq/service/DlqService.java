@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 public class DlqService {
 
     private final SqsClient sqsClient;
-    private final ServiceConfig config;
+    private final ServiceConfig serviceConfig;
 
     public int retryMessages(QueueType queueType) {
 
@@ -67,19 +67,19 @@ public class DlqService {
         return switch (queueType) {
 
             case INVENTORY ->
-                config.getSqs().getInventoryQueue();
+                serviceConfig.getAws().getSqs().getInventoryQueue();
 
             case NOTIFICATION ->
-                config.getSqs().getNotificationQueue();
+                serviceConfig.getAws().getSqs().getNotificationQueue();
 
             case ORDER_COMPLETION ->
-                config.getSqs().getOrderCompletionQueue();
+                serviceConfig.getAws().getSqs().getOrderCompletionQueue();
 
             case ORDER_STATE ->
-                config.getSqs().getOrderStateQueue();
+                serviceConfig.getAws().getSqs().getOrderStateQueue();
 
             case PAYMENT ->
-                config.getSqs().getPaymentQueue();
+                serviceConfig.getAws().getSqs().getPaymentQueue();
         };
     }
 
@@ -88,19 +88,19 @@ public class DlqService {
         return switch (queueType) {
 
             case INVENTORY ->
-                config.getSqs().getInventoryDlq();
+                serviceConfig.getAws().getSqs().getInventoryDlq();
 
             case NOTIFICATION ->
-                config.getSqs().getNotificationDlq();
+                serviceConfig.getAws().getSqs().getNotificationDlq();
 
             case ORDER_COMPLETION ->
-                config.getSqs().getOrderCompletionDlq();
+                serviceConfig.getAws().getSqs().getOrderCompletionDlq();
 
             case ORDER_STATE ->
-                config.getSqs().getOrderStateDlq();
+                serviceConfig.getAws().getSqs().getOrderStateDlq();
 
             case PAYMENT ->
-                config.getSqs().getPaymentDlq();
+                serviceConfig.getAws().getSqs().getPaymentDlq();
         };
     }
 }
