@@ -34,3 +34,6 @@ aws:
 
     payment-queue: payment-queue
     payment-dlq: payment-dlq
+
+    ledger-queue: ledger-queue
+    ledger-dlq: ledger-dlq

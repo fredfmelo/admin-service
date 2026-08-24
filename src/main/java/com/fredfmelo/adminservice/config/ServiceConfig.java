@@ -51,6 +51,9 @@ public class ServiceConfig {
     
         private String paymentQueue;
         private String paymentDlq;
+
+        private String ledgerQueue;
+        private String ledgerDlq;
     }
     
 }

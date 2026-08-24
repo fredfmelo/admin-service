@@ -69,6 +69,9 @@ public class DlqService {
             case INVENTORY ->
                 serviceConfig.getAws().getSqs().getInventoryQueue();
 
+            case LEDGER ->
+                serviceConfig.getAws().getSqs().getLedgerQueue();
+
             case NOTIFICATION ->
                 serviceConfig.getAws().getSqs().getNotificationQueue();
 
@@ -89,6 +92,9 @@ public class DlqService {
 
             case INVENTORY ->
                 serviceConfig.getAws().getSqs().getInventoryDlq();
+
+            case LEDGER ->
+                serviceConfig.getAws().getSqs().getLedgerDlq();
 
             case NOTIFICATION ->
                 serviceConfig.getAws().getSqs().getNotificationDlq();
